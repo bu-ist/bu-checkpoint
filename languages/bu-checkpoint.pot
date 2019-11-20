@@ -1,0 +1,161 @@
+# Copyright (C) 2019 Boston University, Jim Reevior
+# This file is distributed under the same license as the BU Checkpoint package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BU Checkpoint 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bu-checkpoint\n"
+"POT-Creation-Date: 2019-11-20 01:37:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: inc/post_type.php:17
+msgid "Checkpoint"
+msgstr ""
+
+#: inc/post_type.php:24
+msgid " Archives"
+msgstr ""
+
+#: inc/post_type.php:25
+msgid " Attributes"
+msgstr ""
+
+#: inc/post_type.php:26
+msgid "Parent"
+msgstr ""
+
+#: inc/post_type.php:27 inc/taxonomy.php:16
+msgid "All "
+msgstr ""
+
+#: inc/post_type.php:28 inc/taxonomy.php:19
+msgid "Add New "
+msgstr ""
+
+#: inc/post_type.php:29
+msgid "Add New"
+msgstr ""
+
+#: inc/post_type.php:30 inc/taxonomy.php:20
+msgid "New "
+msgstr ""
+
+#: inc/post_type.php:31 inc/taxonomy.php:17
+msgid "Edit "
+msgstr ""
+
+#: inc/post_type.php:32 inc/taxonomy.php:18
+msgid "Update "
+msgstr ""
+
+#: inc/post_type.php:33 inc/post_type.php:34 inc/taxonomy.php:25
+msgid "View "
+msgstr ""
+
+#: inc/post_type.php:35 inc/taxonomy.php:14
+msgid "Search "
+msgstr ""
+
+#: inc/post_type.php:36
+msgid "Not found"
+msgstr ""
+
+#: inc/post_type.php:37
+msgid "Not found in Trash"
+msgstr ""
+
+#: inc/post_type.php:38
+msgid "Insert into item"
+msgstr ""
+
+#: inc/post_type.php:39
+msgid "Uploaded to this item"
+msgstr ""
+
+#: inc/post_type.php:40
+msgid " list"
+msgstr ""
+
+#: inc/post_type.php:41
+msgid " list navigation"
+msgstr ""
+
+#: inc/post_type.php:42
+msgid "Filter items list"
+msgstr ""
+
+#: inc/post_type.php:47
+msgid "Posts for "
+msgstr ""
+
+#: inc/taxonomy.php:15
+msgid "Popular "
+msgstr ""
+
+#: inc/taxonomy.php:21
+msgid "Separate "
+msgstr ""
+
+#: inc/taxonomy.php:21
+msgid " with commas"
+msgstr ""
+
+#: inc/taxonomy.php:22
+msgid "Add or remove "
+msgstr ""
+
+#: inc/taxonomy.php:23
+msgid "Choose from the most used "
+msgstr ""
+
+#: inc/taxonomy.php:24
+msgid "No "
+msgstr ""
+
+#: inc/taxonomy.php:24
+msgid "s found."
+msgstr ""
+
+#: inc/taxonomy.php:26
+msgid "Parent "
+msgstr ""
+
+#: inc/taxonomy.php:55 inc/taxonomy.php:67
+msgid "Status"
+msgstr ""
+
+#: inc/taxonomy.php:56 inc/taxonomy.php:68
+msgid "Statuses"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "BU Checkpoint"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/bu-ist/bu-checkpoint"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Editorial workflow for posts and pages."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Boston University, Jim Reevior"
+msgstr ""
