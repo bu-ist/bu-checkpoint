@@ -1,4 +1,2 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-console.log('hello');
-
-},{}]},{},[1]);
+!function u(i,f,c){function l(e,r){if(!f[e]){if(!i[e]){var n="function"==typeof require&&require;if(!r&&n)return n(e,!0);if(a)return a(e,!0);var o=new Error("Cannot find module '"+e+"'");throw o.code="MODULE_NOT_FOUND",o}var t=f[e]={exports:{}};i[e][0].call(t.exports,function(r){return l(i[e][1][r]||r)},t,t.exports,u,i,f,c)}return f[e].exports}for(var a="function"==typeof require&&require,r=0;r<c.length;r++)l(c[r]);return l}({1:[function(r,e,n){console.log("hello")},{}]},{},[1]);
+//# sourceMappingURL=app.js.map

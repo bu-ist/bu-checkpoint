@@ -23,6 +23,7 @@ define( 'BU_CHECKPOINT_STAGES', 'bu-checkpoint-stages' );
 // Required
 require 'inc/taxonomy.php';
 require 'inc/post-type.php';
+require 'inc/rest-api.php';
 
 /*
 * Adds a submenu to the Settings menu.
@@ -34,7 +35,7 @@ function create_admin_menu() {
 add_action( 'admin_menu', __NAMESPACE__ . '\\create_admin_menu' );
 
 function display_admin_screen() {
-	echo '<div id="main"></div>';
+	echo '<div id="checkpoint-admin-wrapper"></div>';
 }
 
 /**
