@@ -13,14 +13,16 @@
 
 namespace BU\Plugins\Checkpoint;
 
+use function plugin_dir_url;
+
 define( 'BU_CHECKPOINT_VER', '1.0' );
 
-// CPT & Taxonomies
+// CPT & Taxonomies.
 define( 'BU_CHECKPOINT_CPT', 'bu-checkpoint' );
 define( 'BU_CHECKPOINT_STATUS', 'bu-checkpoint-status' );
 define( 'BU_CHECKPOINT_STAGES', 'bu-checkpoint-stages' );
 
-// Required
+// Required.
 require 'inc/taxonomy.php';
 require 'inc/post-type.php';
 
@@ -37,6 +39,9 @@ function get_meta_keys() {
 	);
 }
 
+/**
+ * Register the meta fields.
+ */
 function init_register_meta() {
 	$meta = get_meta_keys();
 	foreach ( $meta as $key ) {
@@ -62,8 +67,33 @@ function create_admin_menu() {
 }
 add_action( 'admin_menu', __NAMESPACE__ . '\\create_admin_menu' );
 
+/**
+ * Callback for displaying the admin screen div wrapper.
+ */
 function display_admin_screen() {
 	echo '<div id="checkpoint-admin-wrapper"></div>';
+}
+
+/**
+ * Add meta box.
+ */
+function action_add_meta_box() {
+	add_meta_box(
+		'bu-checkpoint',
+		__( 'Checkpoint', 'bu-checkpoint' ),
+		__NAMESPACE__ . '\\display_meta_box',
+		'page',
+		'normal',
+		'default'
+	);
+}
+add_action( 'add_meta_boxes', __NAMESPACE__ . '\\action_add_meta_box' );
+
+/**
+ * Callback to display the metabox wrapper.
+ */
+function display_meta_box() {
+	echo '<div id="checkpoint-metabox-wrapper"></div>';
 }
 
 /**
@@ -71,7 +101,7 @@ function display_admin_screen() {
  */
 function enqueue_scripts() {
 	if ( ! in_array( BU_ENVIRONMENT_TYPE, array( 'test', 'prod' ) ) ) {
-		// Load Dev scripts in sandbox
+		// Load Dev scripts in sandbox.
 		wp_enqueue_script( 'checkpoint-react', 'https://unpkg.com/react@16/umd/react.development.js', array(), BU_CHECKPOINT_VER, true );
 		wp_enqueue_script( 'checkpoint-react-dom', 'https://unpkg.com/react-dom@16/umd/react-dom.development.js', array( 'checkpoint-react' ), BU_CHECKPOINT_VER, true );
 	} else {
@@ -80,7 +110,7 @@ function enqueue_scripts() {
 		wp_enqueue_script( 'checkpoint-react-dom', 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js', array( 'checkpoint-react' ), BU_CHECKPOINT_VER, true );
 	}
 
-	wp_enqueue_script( 'bu-checkpoint', \plugin_dir_url( __FILE__ ) . 'js/app.js', array( 'checkpoint-react', 'checkpoint-react-dom' ), BU_CHECKPOINT_VER, true );
+	wp_enqueue_script( 'bu-checkpoint', plugin_dir_url( __FILE__ ) . 'js/app.js', array( 'checkpoint-react', 'checkpoint-react-dom' ), BU_CHECKPOINT_VER, true );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
