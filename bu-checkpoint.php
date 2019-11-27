@@ -58,10 +58,9 @@ function init_register_meta() {
 }
 add_action( 'init', __NAMESPACE__ . '\\init_register_meta' );
 
-/*
-* Adds a submenu to the Settings menu.
-* the page will contain the ID of html element that hosts our JSX components.
-*/
+/**
+ * Admin menu.
+ */
 function create_admin_menu() {
 	add_menu_page( 'Checkpoint', 'Checkpoint', 'edit_others_pages', 'bu-checkpoint', __NAMESPACE__ . '\\display_admin_screen', 'dashicons-yes' );
 }
