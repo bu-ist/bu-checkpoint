@@ -23,7 +23,35 @@ define( 'BU_CHECKPOINT_STAGES', 'bu-checkpoint-stages' );
 // Required
 require 'inc/taxonomy.php';
 require 'inc/post-type.php';
-require 'inc/rest-api.php';
+
+/**
+ * Utility function to get the meta keys.
+ *
+ * @return array Meta keys.
+ */
+function get_meta_keys() {
+	return array(
+		'bu-checkpoint-comments',
+		'bu-checkpoint-stage',
+		'bu-checkpoint-status',
+	);
+}
+
+function init_register_meta() {
+	$meta = get_meta_keys();
+	foreach ( $meta as $key ) {
+		register_meta(
+			BU_CHECKPOINT_CPT,
+			$key,
+			array(
+				'show_in_rest' => true,
+				'type'         => 'string',
+				'single'       => true,
+			)
+		);
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\\init_register_meta' );
 
 /*
 * Adds a submenu to the Settings menu.
