@@ -99,17 +99,7 @@ function display_meta_box() {
  * Enqueue React & scripts
  */
 function enqueue_scripts() {
-	if ( ! in_array( BU_ENVIRONMENT_TYPE, array( 'test', 'prod' ) ) ) {
-		// Load Dev scripts in sandbox.
-		wp_enqueue_script( 'checkpoint-react', 'https://unpkg.com/react@16/umd/react.development.js', array(), BU_CHECKPOINT_VER, true );
-		wp_enqueue_script( 'checkpoint-react-dom', 'https://unpkg.com/react-dom@16/umd/react-dom.development.js', array( 'checkpoint-react' ), BU_CHECKPOINT_VER, true );
-	} else {
-		// Load Prod scripts.
-		wp_enqueue_script( 'checkpoint-react', 'https://unpkg.com/react@16/umd/react.production.min.js', array(), BU_CHECKPOINT_VER, true );
-		wp_enqueue_script( 'checkpoint-react-dom', 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js', array( 'checkpoint-react' ), BU_CHECKPOINT_VER, true );
-	}
-
-	wp_enqueue_script( 'bu-checkpoint', plugin_dir_url( __FILE__ ) . 'js/app.js', array( 'checkpoint-react', 'checkpoint-react-dom' ), BU_CHECKPOINT_VER, true );
+	wp_enqueue_script( 'bu-checkpoint', plugin_dir_url( __FILE__ ) . 'js/app.js', array(), BU_CHECKPOINT_VER, true );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );

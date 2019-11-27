@@ -1,5 +1,4 @@
 module.exports = function( grunt ) {
-
 	'use strict';
 	// Require external packages.
 	const autoprefixer = require( 'autoprefixer' );
@@ -16,10 +15,10 @@ module.exports = function( grunt ) {
 			},
 			update_all_domains: {
 				options: {
-					updateDomains: true
+					updateDomains: true,
 				},
-				src: [ '*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*' ]
-			}
+				src: [ '*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*' ],
+			},
 		},
 		watch: {
 			grunt: {
@@ -53,7 +52,7 @@ module.exports = function( grunt ) {
 				watch: true,
 				browserifyOptions: {
 					debug: false,
-					transform: [ [ 'babelify' ] ],
+					transform: [ [ 'babelify', { presets: [ '@babel/env', '@babel/react' ] } ] ],
 				},
 			},
 			dist: {
@@ -128,15 +127,15 @@ module.exports = function( grunt ) {
 						autoprefixer, // add vendor prefixes.
 					],
 				},
-				src: ['style.css', 'style.min.css'],
+				src: [ 'style.css', 'style.min.css' ],
 			},
 		},
 
 		wp_readme_to_markdown: {
 			your_target: {
 				files: {
-					'README.md': 'readme.txt'
-				}
+					'README.md': 'readme.txt',
+				},
 			},
 		},
 
@@ -144,17 +143,17 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*'],
+					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
 					mainFile: 'bu-checkpoint.php',
 					potFilename: 'bu-checkpoint.pot',
 					potHeaders: {
 						poedit: true,
-						'x-poedit-keywordslist': true
+						'x-poedit-keywordslist': true,
 					},
 					type: 'wp-plugin',
-					updateTimestamp: true
-				}
-			}
+					updateTimestamp: true,
+				},
+			},
 		},
 		clean: {
 			languages: [ 'languages/*' ],
@@ -181,8 +180,8 @@ module.exports = function( grunt ) {
 
 	grunt.util.linefeed = '\n';
 
-	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
-	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'i18n', [ 'addtextdomain', 'makepot' ] );
+	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
 	grunt.registerTask( 'styles', [ 'sass', 'postcss' ] );
 	grunt.registerTask( 'scripts', [
 		'clean:js',
@@ -191,5 +190,4 @@ module.exports = function( grunt ) {
 	] );
 	grunt.registerTask( 'build', [ 'styles', 'scripts', 'i18n' ] );
 	grunt.registerTask( 'default', [ 'watch' ] );
-
 };
