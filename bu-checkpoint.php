@@ -100,6 +100,15 @@ function display_meta_box() {
  */
 function enqueue_scripts() {
 	wp_enqueue_script( 'bu-checkpoint', plugin_dir_url( __FILE__ ) . 'js/app.js', array(), BU_CHECKPOINT_VER, true );
+	wp_localize_script(
+		'bu-checkpoint',
+		'checkpointData',
+		array(
+			'restURL' => trailingslashit( get_site_url() ) . 'wp-json/wp/v2',
+			'postID'  => get_queried_object_id(),
+			'user' => get_current_user_id(),
+		)
+	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
