@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-} from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-class App extends Component {
-}
-export default App;
+import Metabox from './components/metabox';
+import Admin from './components/admin';
+
+ReactDOM.render( <Metabox />, document.getElementById( 'checkpoint-metabox-wrapper' ) );

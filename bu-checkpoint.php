@@ -103,3 +103,13 @@ function enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
+
+/**
+ * Admin specific styles
+ */
+function admin_enqueue_styles() {
+	wp_enqueue_style( 'quill-core', plugin_dir_url( __FILE__ ) . 'css/quill.core.css', array(), BU_CHECKPOINT_VER );
+	wp_enqueue_style( 'quill-snow', plugin_dir_url( __FILE__ ) . 'css/quill.snow.css', array(), BU_CHECKPOINT_VER );
+}
+add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\admin_enqueue_styles' );
+

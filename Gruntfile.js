@@ -52,7 +52,7 @@ module.exports = function( grunt ) {
 				watch: true,
 				browserifyOptions: {
 					debug: false,
-					transform: [ [ 'babelify', { presets: [ '@babel/env', '@babel/react' ] } ] ],
+					transform: [ [ 'babelify', { presets: [ '@babel/env', '@babel/react' ], plugins: [ '@babel/plugin-proposal-class-properties' ] } ] ],
 				},
 			},
 			dist: {
@@ -97,7 +97,6 @@ module.exports = function( grunt ) {
 				includePaths: [
 					'node_modules/normalize-scss/sass',
 					'node_modules/mathsass/dist/',
-					'node_modules/responsive-foundation/css-dev',
 				],
 				bundleExec: true,
 			},
