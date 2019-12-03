@@ -33,6 +33,7 @@ require 'inc/post-type.php';
  */
 function get_meta_keys() {
 	return array(
+		'bu-checkpoint-post-id',
 		'bu-checkpoint-comments',
 		'bu-checkpoint-stage',
 		'bu-checkpoint-status',
@@ -109,6 +110,7 @@ function enqueue_scripts() {
 		array(
 			'restURL' => trailingslashit( get_site_url() ) . 'wp-json/wp/v2',
 			'postID'  => get_queried_object_id(),
+			'title'   => get_the_title( get_queried_object_id() ),
 			'user'    => get_current_user_id(),
 			'nonce'   => wp_create_nonce( 'wp_rest' ),
 		)

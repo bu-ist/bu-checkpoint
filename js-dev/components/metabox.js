@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import React, { Component } from 'react';
 import {
 	BrowserRouter as Router,
@@ -25,8 +26,32 @@ class Metabox extends Component {
 	}
 
 	handleComment() {
-
-
+		console.log( 'STATE', this.state );
+		const checkpointID = 0;
+		const checkpointMeta = {
+			'bu-checkpoint-post-id': this.state.postId,
+			'bu-checkpoint-comments': this.state.newComment,
+		};
+		fetch(
+			vars.checkpointURL,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					accept: 'application/json',
+					'X-WP-Nonce': vars.nonce
+				},
+				body: JSON.stringify( {
+					title: vars.title,
+					status: 'publish',
+					meta: checkpointMeta,
+				} )
+			}
+		).then( ( response ) => {
+			return response.json();
+		} ).catch( ( err ) => {
+			console.error( 'shit', err );
+		} );
 	}
 
 	render() {
@@ -37,14 +62,14 @@ class Metabox extends Component {
 					onChange={ ( content, delta, source, editor ) => {
 						let commentID = 0;
 						if ( this.state.newComment.id ) {
-							commentID = this.state.newComment.id;
+							commentID = this.state.newComment.id + 1;
 						}
 						this.setState( {
 							newComment: {
-								id: commentID + 1,
+								id: commentID,
 								author: vars.user,
 								assigned: '',
-								comment: editor.getContents()
+								comment: editor.getContents(),
 							}
 						} );
 					} }

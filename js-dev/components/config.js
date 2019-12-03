@@ -1,11 +1,7 @@
 // Common variables and scripts
 'use strict';
 
-const vars = {
-	restURL: window.checkpointData.restURL,
-	postID: window.checkpointData.postID,
-	user: window.checkpointData.author,
-};
+const vars = window.checkpointData;
 
 vars.checkpointURL = vars.restURL + '/bu-checkpoint/';
 
