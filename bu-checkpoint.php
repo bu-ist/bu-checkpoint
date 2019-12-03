@@ -49,9 +49,12 @@ function init_register_meta() {
 			BU_CHECKPOINT_CPT,
 			$key,
 			array(
-				'show_in_rest' => true,
-				'type'         => 'string',
-				'single'       => true,
+				'show_in_rest'  => true,
+				'type'          => 'string',
+				'single'        => true,
+				'auth_callback' => function() {
+					return current_user_can( 'edit_other_pages' );
+				},
 			)
 		);
 	}
@@ -106,7 +109,8 @@ function enqueue_scripts() {
 		array(
 			'restURL' => trailingslashit( get_site_url() ) . 'wp-json/wp/v2',
 			'postID'  => get_queried_object_id(),
-			'user' => get_current_user_id(),
+			'user'    => get_current_user_id(),
+			'nonce'   => wp_create_nonce( 'wp_rest' ),
 		)
 	);
 }

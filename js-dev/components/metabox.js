@@ -6,11 +6,11 @@ import {
 	Redirect
 } from 'react-router-dom';
 import Quill from 'react-quill';
-import wpData from './config';
+import vars from './config';
 
 class Metabox extends Component {
 	state = {
-		postId: wpData.postID,
+		postId: vars.postID,
 		comments: null,
 		newComment: {
 			id: null,
@@ -25,6 +25,7 @@ class Metabox extends Component {
 	}
 
 	handleComment() {
+
 
 	}
 
@@ -41,13 +42,14 @@ class Metabox extends Component {
 						this.setState( {
 							newComment: {
 								id: commentID + 1,
-
+								author: vars.user,
+								assigned: '',
 								comment: editor.getContents()
 							}
 						} );
 					} }
 				/>
-				<p><button type="submit">Comment</button></p>
+				<p><button type="submit">Add Comment</button></p>
 			</form>
 		);
 	}
