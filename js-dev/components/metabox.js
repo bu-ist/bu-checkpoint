@@ -25,8 +25,8 @@ class Metabox extends Component {
 
 	}
 
-	handleComment() {
-		console.log( 'STATE', this.state );
+	handleComment(e) {
+		e.preventDefault();
 		const checkpointID = 0;
 		const checkpointMeta = {
 			'bu-checkpoint-post-id': this.state.postId,
@@ -50,7 +50,7 @@ class Metabox extends Component {
 		).then( ( response ) => {
 			return response.json();
 		} ).catch( ( err ) => {
-			console.error( 'shit', err );
+			console.error( 'Error: ', err );
 		} );
 	}
 
