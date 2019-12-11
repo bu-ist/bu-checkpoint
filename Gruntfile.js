@@ -49,9 +49,8 @@ module.exports = function( grunt ) {
 		},
 		browserify: {
 			options: {
-				watch: true,
 				browserifyOptions: {
-					debug: false,
+					debug: true,
 					transform: [ [ 'babelify', { presets: [ '@babel/env', '@babel/react' ], plugins: [ '@babel/plugin-proposal-class-properties' ] } ] ],
 				},
 			},

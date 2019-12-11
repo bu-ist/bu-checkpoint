@@ -25,42 +25,7 @@ define( 'BU_CHECKPOINT_STAGES', 'bu-checkpoint-stages' );
 // Required.
 require 'inc/taxonomy.php';
 require 'inc/post-type.php';
-
-/**
- * Utility function to get the meta keys.
- *
- * @return array Meta keys.
- */
-function get_meta_keys() {
-	return array(
-		'bu-checkpoint-post-id',
-		'bu-checkpoint-comments',
-		'bu-checkpoint-stage',
-		'bu-checkpoint-status',
-	);
-}
-
-/**
- * Register the meta fields.
- */
-function init_register_meta() {
-	$meta = get_meta_keys();
-	foreach ( $meta as $key ) {
-		register_meta(
-			BU_CHECKPOINT_CPT,
-			$key,
-			array(
-				'show_in_rest'  => true,
-				'type'          => 'string',
-				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_other_pages' );
-				},
-			)
-		);
-	}
-}
-add_action( 'init', __NAMESPACE__ . '\\init_register_meta' );
+require 'inc/meta.php';
 
 /**
  * Admin menu.
@@ -104,16 +69,17 @@ function display_meta_box() {
  */
 function enqueue_scripts() {
 	wp_enqueue_script( 'bu-checkpoint', plugin_dir_url( __FILE__ ) . 'js/app.js', array(), BU_CHECKPOINT_VER, true );
+	$data = array(
+		'restURL' => trailingslashit( get_site_url() ) . 'wp-json/wp/v2',
+		'postID'  => get_queried_object_id(),
+		'title'   => get_the_title( get_queried_object_id() ),
+		'user'    => get_current_user_id(),
+		'nonce'   => wp_create_nonce( 'wp_rest' ),
+	);
 	wp_localize_script(
 		'bu-checkpoint',
 		'checkpointData',
-		array(
-			'restURL' => trailingslashit( get_site_url() ) . 'wp-json/wp/v2',
-			'postID'  => get_queried_object_id(),
-			'title'   => get_the_title( get_queried_object_id() ),
-			'user'    => get_current_user_id(),
-			'nonce'   => wp_create_nonce( 'wp_rest' ),
-		)
+		$data
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );

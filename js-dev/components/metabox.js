@@ -25,13 +25,10 @@ class Metabox extends Component {
 
 	}
 
-	handleComment(e) {
+	handleComment( e ) {
+		console.log( this );
 		e.preventDefault();
 		const checkpointID = 0;
-		const checkpointMeta = {
-			'bu-checkpoint-post-id': this.state.postId,
-			'bu-checkpoint-comments': this.state.newComment,
-		};
 		fetch(
 			vars.checkpointURL,
 			{
@@ -44,7 +41,7 @@ class Metabox extends Component {
 				body: JSON.stringify( {
 					title: vars.title,
 					status: 'publish',
-					meta: checkpointMeta,
+					bu_checkpoint_post_id: this.state.postId
 				} )
 			}
 		).then( ( response ) => {
@@ -56,7 +53,7 @@ class Metabox extends Component {
 
 	render() {
 		return (
-			<form className="comment-form" onSubmit={ this.handleComment }>
+			<form className="comment-form" onSubmit={ this.handleComment.bind( this ) }>
 				<Quill
 					defaultValue={ this.state.newComment.content }
 					onChange={ ( content, delta, source, editor ) => {
